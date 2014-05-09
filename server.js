@@ -40,7 +40,7 @@ router.get("/about", function (req, res) {
 });
 // route with parameters (http://localhost:8080/hello/:name)
 router.get("/hello/:name", function (req, res) {
-	res.send("Hello " + req.params.name +"!");
+	res.send("Hello " + req.name +"!");
 });
 
 //apply the routes to our application
