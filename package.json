@@ -1,0 +1,22 @@
+{
+  "name": "Express4",
+  "version": "0.0.0",
+  "description": "First steps with Express4",
+  "main": "server.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Bondifrench"
+  },
+  "keywords": [
+    "NodeJs",
+    "Express4"
+  ],
+  "author": "Bondifrench",
+  "license": "MIT",
+  "dependencies":{
+    "express":"~4.0.0"
+  }
+}
