@@ -15,6 +15,17 @@ router.use(function (req, res, next) {
 	//continue doing what we were doing and go to the route 
 	next();
 })
+
+router.param("name", function (req, resp, next, name) {
+	// Do validation on name here
+	//blah blah validation
+	//log something so we know it works here
+	console.log("doing name validations on "+name);
+	//once validation is done save the new item in the req
+	req.name = name;
+	//go to the next thing
+	next();
+})
 //The order you place your middleware and routes is very important. Everything will happen in the order
 //that they appear. This means that if you place your middleware after a route, then the route will happen
 // before the middleware and the request will end there. Your middleware will not run at that point.
