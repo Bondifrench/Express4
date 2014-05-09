@@ -27,6 +27,10 @@ router.get("/", function (req, res) {
 router.get("/about", function (req, res) {
 	res.send("This is the about page!");
 });
+// route with parameters (http://localhost:8080/hello/:name)
+router.get("/hello/:name", function (req, res) {
+	res.send("Hello " + req.params.name +"!");
+});
 
 //apply the routes to our application
 app.use("/", router);
