@@ -7,11 +7,21 @@ var app = express();
 var port = process.env.PORT || 8080;
 
 // $routeParams
-//Sample route with a route we used to setElement
-app.get("/sample", function (req, res) {
-	res.send("this is a sample!");
-});
 //We'll define our routes here
+var router = express.Router();
+
+//home page route (http://localhost:8080)
+router.get("/", function (req, res) {
+	res.send("I'm in the home page!");
+});
+//about page route (http://localhost:8080/about)
+router.get("/about", function (req, res) {
+	res.send("This is the about page!");
+});
+
+//apply the routes to our application
+
+app.use("/", router);
 
 //Start the server
 
