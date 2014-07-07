@@ -47,12 +47,29 @@ router.route('/bears')
 			res.send(err);
 		})
 	})
+
 //on routes that end in /bears/:bear_id
 router.route('/bears/:bear_id')
 	.get(function (req, res) {
 		Bear.find(req.params.bear_id)
 			.success(function (bear) {
 				res.json(bear);
+			})
+			.error(function (err) {
+				res.send(err);
+			})
+	})
+	//update the bear with this id (accessed at PUT http://localhost:8080/api/bears/:bear_id)
+	.put(function (req, res) {
+		Bear.find(req.params.bear_id)
+			.success(function (bear) {
+				console.log(req.body.name);
+				//bear.name = req.body.name;
+				bear.updateAttributes({name: req.body.name}).success(function () {
+					res.json({message:'Bear updated!'});
+				}).error(function (err) {
+					res.send(err)
+				});
 			})
 			.error(function (err) {
 				res.send(err);
@@ -71,7 +88,7 @@ app.use(function(err, req, res, next){
 
 Bear
 	.sequelize
-	.sync({force: true})
+	.sync()
 	.complete(function (err) {
 		if (err) {
 			throw err;
