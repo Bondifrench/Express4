@@ -48,7 +48,16 @@ router.route('/bears')
 		})
 	})
 //on routes that end in /bears/:bear_id
-//router.route('/bears/:bear_id')
+router.route('/bears/:bear_id')
+	.get(function (req, res) {
+		Bear.find(req.params.bear_id)
+			.success(function (bear) {
+				res.json(bear);
+			})
+			.error(function (err) {
+				res.send(err);
+			})
+	})
 
 
 //Register our routes
