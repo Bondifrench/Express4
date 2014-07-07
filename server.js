@@ -63,13 +63,25 @@ router.route('/bears/:bear_id')
 	.put(function (req, res) {
 		Bear.find(req.params.bear_id)
 			.success(function (bear) {
-				console.log(req.body.name);
-				//bear.name = req.body.name;
 				bear.updateAttributes({name: req.body.name}).success(function () {
 					res.json({message:'Bear updated!'});
 				}).error(function (err) {
 					res.send(err)
 				});
+			})
+			.error(function (err) {
+				res.send(err);
+			})
+	})
+	//delete the bear with this id (accessed at DELETE http://localhost:8080/api/bears/:bear_id)
+	.delete(function (req, res) {
+		Bear.find(req.params.bear_id)
+			.success(function (bear) {
+				bear.destroy().success(function () {
+					res.json({message:'Bear was successfully deleted'});
+				}).error(function (err) {
+					res.send(err);
+				})
 			})
 			.error(function (err) {
 				res.send(err);
