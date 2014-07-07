@@ -90,7 +90,7 @@ router.route('/bears/:bear_id')
 
 
 //Register our routes
-//all of our routes will  be rpefixed with /api
+//all of our routes will be prefixed with /api
 app.use('/api', router);
 
 app.use(function(err, req, res, next){
@@ -100,7 +100,7 @@ app.use(function(err, req, res, next){
 
 Bear
 	.sequelize
-	.sync()
+	.sync() //if argument is {force: true}, this will drop the table first and re-create it afterwards
 	.complete(function (err) {
 		if (err) {
 			throw err;
